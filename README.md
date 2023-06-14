@@ -19,15 +19,7 @@
      - Follow a particular album, gets notification when new song is added
      
  ## Entity Relationship Diagram:
-    ![Model](https://github.com/KazimRaza-dev/Django-Assignment-SongsApp/blob/master/songs_app_backend/django-training-erd.jpeg)
-    
+    ![Model](https://github.com/KazimRaza-dev/Django-Assignment-SongsApp/blob/master/django-training-erd.jpeg)
+
     ![alt text](https://github.com/KazimRaza-dev/Django-Assignment-SongsApp/blob/master/songs_app_backend/django-training-erd.jpeg)
-
-    ![alt text](https://github.com/KazimRaza-dev/Django-Assignment-SongsApp/blob/master/django-training-erd.jpeg)
-
-
-    <p align="center">
-        <img src="https://github.com/KazimRaza-dev/Django-Assignment-SongsApp/blob/master/songs_app_backend/django-training-erd.jpeg"               width="350" title="hover text">
-        <img src="your_relative_path_here_number_2_large_name" width="350" alt="accessibility text">
-    </p>
 
