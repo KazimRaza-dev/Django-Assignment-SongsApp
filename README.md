@@ -4,9 +4,9 @@
     - Admin
 ## Use cases:
     - JWT Authentication
-    #### Admin can:
+    Admin can:
      - Schedule a process to add a song by specifying a future time
-    #### End-user can:
+    End-user can:
      - Login/Signup/Forgot Password
      - View all available songs
      - Search/Filter songs based on name search and tags
