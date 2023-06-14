@@ -17,6 +17,6 @@
      - Add songs to particular album
      - Add comments on songs
    
-### Models Relationship Diagram
+### Entity Relationship Diagram:
 ![Model](https://github.com/KazimRaza-dev/Django-Assignment-SongsApp/blob/master/django-training-erd.jpeg)
 
