@@ -17,3 +17,8 @@
      - Add songs to particular album
      - Add comments on songs
      - Follow a particular album, gets notification when new song is added
+     
+ ## Entity Relationship Diagram:
+    ![Model](https://github.com/KazimRaza-dev/Django-Assignment-SongsApp/blob/master/django-training-erd.jpeg)
+
+    ![alt text](https://github.com/KazimRaza-dev/Django-Assignment-SongsApp/blob/master/songs_app_backend/django-training-erd.jpeg)
