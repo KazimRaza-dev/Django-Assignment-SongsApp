@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import User
 from django.contrib.auth import authenticate
+from rest_framework_simplejwt.tokens import RefreshToken
 
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
@@ -12,8 +13,6 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
                   'first_name', 'last_name', 'user_type')
         extra_kwargs = {
             'password': {'write_only': True},
-            # 'first_name': {'required': True},
-            # 'last_name': {'required': True}
         }
 
     def validate_password(self, password):
@@ -45,4 +44,14 @@ class UserLoginSerializer(serializers.Serializer):
                 'Email and password are required.')
 
         data['user'] = user
+        data['tokens'] = self.get_tokens(user)
         return data
+
+    def get_tokens(self, user):
+        refresh = RefreshToken.for_user(user)
+        access_token = str(refresh.access_token)
+
+        return {
+            'access_token': access_token,
+            'refresh_token': str(refresh),
+        }
