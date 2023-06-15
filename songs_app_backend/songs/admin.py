@@ -6,7 +6,7 @@ from .models import Song, UserSongLike, UserSongComment, UserSongFavorite, Album
 @admin.register(Song)
 class SongAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'singer',
-                    'tag_list', 'created_date',)
+                    'tag_list', 'created_time',)
 
     def get_queryset(self, request):
         return super().get_queryset(request).prefetch_related('tags')

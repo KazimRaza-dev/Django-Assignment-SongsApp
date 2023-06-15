@@ -8,6 +8,8 @@ djangorestframework = "*"
 mysqlclient = "*"
 djangorestframework-simplejwt = "*"
 django-taggit = "*"
+celery = "*"
+pytz = "*"
 
 [dev-packages]
 
