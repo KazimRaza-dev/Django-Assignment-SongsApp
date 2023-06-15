@@ -23,9 +23,4 @@ class User(AbstractUser):
                        'first_name', 'last_name')
 
     def __str__(self):
-        # user_obj = {
-        #     "id": self.id,
-        #     "user_type": self.user_type
-        # }
-        # return f"{user_obj}"
         return f"{self.username}({self.id})"

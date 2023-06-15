@@ -1,7 +1,5 @@
 # Create your tasks here
 
-# from demoapp.models import Widget
-
 from celery import shared_task
 from .models import Song
 
