@@ -1,9 +1,17 @@
 from rest_framework import serializers
-from .models import Song
+from .models import Song, UserSongLike, UserSongFavorite
 from taggit.serializers import TagListSerializerField, TaggitSerializer
 from .tasks import add_song_task
 from datetime import datetime, timedelta
 import pytz
+
+
+class SongSerializer(TaggitSerializer, serializers.ModelSerializer):
+    tags = TagListSerializerField()
+
+    class Meta:
+        model = Song
+        fields = ('id', 'title', 'singer', 'tags')
 
 
 class AddSongSerializer(TaggitSerializer, serializers.ModelSerializer):
@@ -61,9 +69,27 @@ class AddSongSerializer(TaggitSerializer, serializers.ModelSerializer):
         return desired_time_seconds
 
 
-class SongSerializer(TaggitSerializer, serializers.ModelSerializer):
-    tags = TagListSerializerField()
-
+class LikeSongSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Song
-        fields = ('id', 'title', 'singer', 'tags')
+        model = UserSongLike
+        exclude = ['user_id']
+
+    def create(self, validated_data):
+        try:
+            validated_data['user_id'] = self.context['request'].user
+            return UserSongLike.objects.create(**validated_data)
+        except Exception as e:
+            raise serializers.ValidationError(e)
+
+
+class FavoriteSongSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserSongFavorite
+        exclude = ['user_id']
+
+    def create(self, validated_data):
+        try:
+            validated_data['user_id'] = self.context['request'].user
+            return UserSongFavorite.objects.create(**validated_data)
+        except Exception as e:
+            raise serializers.ValidationError(e)
