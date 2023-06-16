@@ -139,9 +139,5 @@ GitHub.sublime-settings
 .history
 staticfiles/*
 
-# Pipfile and Piplock file
-Pipfile
-Pipfile.lock
-
 # MacOS
 .DS_Store
