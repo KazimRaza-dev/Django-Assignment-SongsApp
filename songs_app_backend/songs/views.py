@@ -2,6 +2,8 @@ from rest_framework.generics import CreateAPIView, ListAPIView
 from .models import Song
 from .serializers import AddSongSerializer, SongSerializer
 from rest_framework.response import Response
+from django_filters.rest_framework import DjangoFilterBackend
+from .utils.songsFilter import SongFilter
 
 
 class SongCreateView(CreateAPIView):
@@ -15,6 +17,8 @@ class SongCreateView(CreateAPIView):
         return Response(response, status=201)
 
 
-class SongListView(ListAPIView):
+class SongListFilterView(ListAPIView):
     queryset = Song.objects.all()
     serializer_class = SongSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = SongFilter
