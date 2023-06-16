@@ -33,3 +33,6 @@ class UserSongAlbum(models.Model):
         User, on_delete=models.CASCADE, related_name='songs_in_albums')
     album_id = models.ForeignKey(
         Album, on_delete=models.CASCADE, related_name='user_songs')
+
+    class Meta:
+        unique_together = ['album_id', 'song_id']
