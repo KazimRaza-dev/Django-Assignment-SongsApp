@@ -3,8 +3,11 @@ from rest_framework.permissions import BasePermission
 
 class CustomUserBasedPermission(BasePermission):
     def has_permission(self, request, view):
+        print('permissions called')
         # Check the user_type of the authenticated user
         user_type = request.user.user_type
+        print(user_type)
+        print(request.user)
 
         # Endpoints only Admin user can access
         allowed_admin_endpoints = ['add-song']

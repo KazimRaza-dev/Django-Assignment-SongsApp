@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'taggit',
     'django_filters',
     'users',
-    'songs'
+    'songs',
+    'albums'
 ]
 
 MIDDLEWARE = [

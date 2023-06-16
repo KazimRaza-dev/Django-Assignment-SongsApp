@@ -6,7 +6,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from .utils.songsFilter import SongFilter
 from .utils.customPermissions import CustomUserBasedPermission
 from rest_framework_simplejwt.authentication import JWTAuthentication
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.permissions import IsAuthenticated
 
 
 class SongListFilterView(ListAPIView):
