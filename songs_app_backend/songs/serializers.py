@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Song, UserSongLike, UserSongFavorite
+from .models import Song, UserSongLike, UserSongFavorite, UserSongComment
 from taggit.serializers import TagListSerializerField, TaggitSerializer
 from .tasks import add_song_task
 from datetime import datetime, timedelta
@@ -91,5 +91,18 @@ class FavoriteSongSerializer(serializers.ModelSerializer):
         try:
             validated_data['user_id'] = self.context['request'].user
             return UserSongFavorite.objects.create(**validated_data)
+        except Exception as e:
+            raise serializers.ValidationError(e)
+
+
+class CommentOnSongSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserSongComment
+        exclude = ['user_id']
+
+    def create(self, validated_data):
+        try:
+            validated_data['user_id'] = self.context['request'].user
+            return UserSongComment.objects.create(**validated_data)
         except Exception as e:
             raise serializers.ValidationError(e)
