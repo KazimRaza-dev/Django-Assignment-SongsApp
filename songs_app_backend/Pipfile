@@ -12,6 +12,8 @@ celery = "*"
 pytz = "*"
 django-filter = "*"
 python-dotenv = "*"
+django-sendgrid-v5 = "*"
+certifi = "*"
 
 [dev-packages]
 

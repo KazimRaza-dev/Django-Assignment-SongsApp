@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "71c05030817598cf148839672e9f5fe52e1068df96360d3926eb3eff388e7d71"
+            "sha256": "2a56ff88a5d3201a259471f6f4e724fa1d9af8fe734b2017827a4290c19eb087"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -47,6 +47,14 @@
             ],
             "index": "pypi",
             "version": "==5.3.1"
+        },
+        "certifi": {
+            "hashes": [
+                "sha256:0f0d56dc5a6ad56fd4ba36484d6cc34451e1c6548c61daad8c320169f91eddc7",
+                "sha256:c6c2e98f5c7869efca1f8916fed228dd91539f9f1b444c314c06eef02980c716"
+            ],
+            "index": "pypi",
+            "version": "==2023.5.7"
         },
         "click": {
             "hashes": [
@@ -94,6 +102,14 @@
             ],
             "index": "pypi",
             "version": "==23.2"
+        },
+        "django-sendgrid-v5": {
+            "hashes": [
+                "sha256:a5ebbdabb7c317defdf55fee67d1d062f54066e7579fc77b678a1d918890336f",
+                "sha256:fc55d0116e696850d8133c20239d2f5b6fb155193389aa56559c4410da53b63a"
+            ],
+            "index": "pypi",
+            "version": "==1.2.2"
         },
         "django-taggit": {
             "hashes": [
@@ -172,6 +188,14 @@
             "index": "pypi",
             "version": "==1.0.0"
         },
+        "python-http-client": {
+            "hashes": [
+                "sha256:ad371d2bbedc6ea15c26179c6222a78bc9308d272435ddf1d5c84f068f249a36",
+                "sha256:bf841ee45262747e00dec7ee9971dfb8c7d83083f5713596488d67739170cea0"
+            ],
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
+            "version": "==3.3.7"
+        },
         "pytz": {
             "hashes": [
                 "sha256:1d8ce29db189191fb55338ee6d0387d82ab59f3d00eac103412d64e0ebd0c588",
@@ -179,6 +203,14 @@
             ],
             "index": "pypi",
             "version": "==2023.3"
+        },
+        "sendgrid": {
+            "hashes": [
+                "sha256:522b30fc98306496208c5d8bdd5642cd6a2fd65cad487475f57f9098ce880604",
+                "sha256:9b15050c6f8826ee576f76a786efb15d956639f485478cbddd79ed69e8350ab8"
+            ],
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4'",
+            "version": "==6.10.0"
         },
         "six": {
             "hashes": [
@@ -195,6 +227,12 @@
             ],
             "markers": "python_version >= '3.5'",
             "version": "==0.4.4"
+        },
+        "starkbank-ecdsa": {
+            "hashes": [
+                "sha256:9399c3371b899d4a235b68a1ed7919d202fbf024bd2c863ae8ebdad343c2a63a"
+            ],
+            "version": "==2.2.0"
         },
         "tzdata": {
             "hashes": [

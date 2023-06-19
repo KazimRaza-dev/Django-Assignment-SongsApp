@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import ssl
 from pathlib import Path
 from datetime import timedelta
 import dotenv
@@ -165,3 +166,15 @@ SIMPLE_JWT = {
     # ‘REFRESH_TOKEN_LIFETIME’ : timedelta(days = 1),
     # ‘ROTATE_REFRESH_TOKENS’ : False
 }
+
+ssl._create_default_https_context = ssl._create_unverified_context
+
+EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
+SENDGRID_SANDBOX_MODE_IN_DEBUG = os.getenv('SENDGRID_SANDBOX_MODE_IN_DEBUG')
+
+SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
+EMAIL_PORT = os.getenv('EMAIL_PORT')
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
