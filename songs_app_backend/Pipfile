@@ -11,6 +11,7 @@ django-taggit = "*"
 celery = "*"
 pytz = "*"
 django-filter = "*"
+python-dotenv = "*"
 
 [dev-packages]
 
