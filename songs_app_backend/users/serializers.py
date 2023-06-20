@@ -21,9 +21,6 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
                 f'This password must contain at least {self.password_min_length} characters.')
         return password
 
-    def create(self, validated_data):
-        return User.objects.create_user(**validated_data)
-
 
 class UserLoginSerializer(serializers.Serializer):
     email = serializers.CharField(max_length=150)
