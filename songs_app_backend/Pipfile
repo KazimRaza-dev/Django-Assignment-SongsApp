@@ -6,6 +6,11 @@ name = "pypi"
 [packages]
 djangorestframework = "*"
 mysqlclient = "*"
+djangorestframework-simplejwt = "*"
+django-taggit = "*"
+celery = "*"
+pytz = "*"
+django-filter = "*"
 
 [dev-packages]
 
