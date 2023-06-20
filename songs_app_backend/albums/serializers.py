@@ -5,16 +5,11 @@ from .utils.sendNotification import sendNotificationToFollowersViaEmail
 
 
 class AlbumSerializer(serializers.ModelSerializer):
+    user_id = serializers.PrimaryKeyRelatedField(read_only=True)
+
     class Meta:
         model = Album
-        exclude = ['user_id']
-
-    def create(self, validated_data):
-        try:
-            validated_data['user_id'] = self.context['request'].user
-            return Album.objects.create(**validated_data)
-        except Exception as e:
-            raise serializers.ValidationError({'message': e})
+        fields = '__all__'
 
 
 class PublicAlbumSerializer(serializers.ModelSerializer):
@@ -42,7 +37,7 @@ class AddSongToAlbumSerializer(serializers.ModelSerializer):
             album_id = self.context['request'].data.get('album_id')
             song_id = self.context['request'].data.get('song_id')
 
-            album = Album.objects.filter(id=album_id, user_id=user).first() 
+            album = Album.objects.filter(id=album_id, user_id=user).first()
             if not album:
                 raise serializers.ValidationError(
                     "You don't have permissions to add song to other users albums")
@@ -63,7 +58,6 @@ class UserFollowAlbumSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         try:
             validated_data['user_id'] = self.context['request'].user
-
             album_id = self.context['request'].data.get('album_id')
             album = Album.objects.filter(id=album_id, status='public').first()
 

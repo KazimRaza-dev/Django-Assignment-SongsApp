@@ -51,7 +51,6 @@ class AddSongSerializer(TaggitSerializer, serializers.ModelSerializer):
             args=(validated_data,),
             eta=creation_time_seconds
         )
-        return {"message": "Song creation scheduled successfully"}
 
     def calculate_creation_time_seconds(self, schedule_datetime, current_time):
         # Convert the schedule and current time strings to datetime objects
@@ -70,39 +69,24 @@ class AddSongSerializer(TaggitSerializer, serializers.ModelSerializer):
 
 
 class LikeSongSerializer(serializers.ModelSerializer):
+    user_id = serializers.PrimaryKeyRelatedField(read_only=True)
+
     class Meta:
         model = UserSongLike
-        exclude = ['user_id']
-
-    def create(self, validated_data):
-        try:
-            validated_data['user_id'] = self.context['request'].user
-            return UserSongLike.objects.create(**validated_data)
-        except Exception as e:
-            raise serializers.ValidationError(e)
+        fields = '__all__'
 
 
 class FavoriteSongSerializer(serializers.ModelSerializer):
+    user_id = serializers.PrimaryKeyRelatedField(read_only=True)
+
     class Meta:
         model = UserSongFavorite
-        exclude = ['user_id']
-
-    def create(self, validated_data):
-        try:
-            validated_data['user_id'] = self.context['request'].user
-            return UserSongFavorite.objects.create(**validated_data)
-        except Exception as e:
-            raise serializers.ValidationError(e)
+        fields = '__all__'
 
 
 class CommentOnSongSerializer(serializers.ModelSerializer):
+    user_id = serializers.PrimaryKeyRelatedField(read_only=True)
+
     class Meta:
         model = UserSongComment
-        exclude = ['user_id']
-
-    def create(self, validated_data):
-        try:
-            validated_data['user_id'] = self.context['request'].user
-            return UserSongComment.objects.create(**validated_data)
-        except Exception as e:
-            raise serializers.ValidationError(e)
+        fields = '__all__'

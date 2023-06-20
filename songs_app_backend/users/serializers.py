@@ -22,6 +22,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         return password
 
     def create(self, validated_data):
+        # calling create method of user manager
         return User.objects.create_user(**validated_data)
 
 

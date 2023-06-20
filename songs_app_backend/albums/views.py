@@ -1,29 +1,32 @@
 from rest_framework.generics import ListCreateAPIView, CreateAPIView, ListAPIView
 from .serializers import AlbumSerializer, AddSongToAlbumSerializer, UserSongAlbumSerializer, PublicAlbumSerializer, UserFollowAlbumSerializer
 from .models import Album, UserSongAlbum, UserFollowAlbum
-from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.permissions import IsAuthenticated
 from songs.utils.customPermissions import CustomUserBasedPermission
 from .utils.albumFilters import UserSongAlbumFilter
 from django_filters.rest_framework import DjangoFilterBackend
-
+from rest_framework import serializers
 # Create your views here.
 
 
 class AlbumView(ListCreateAPIView):
     serializer_class = AlbumSerializer
-    authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated, CustomUserBasedPermission]
 
     def get_queryset(self):
         user = self.request.user
         return Album.objects.filter(user_id=user)
 
+    def perform_create(self, serializer):
+        try:
+            serializer.save(user_id=self.request.user)
+        except Exception as e:
+            raise serializers.ValidationError(e)
+
 
 class AddSongToAlbumView(CreateAPIView):
     queryset = UserSongAlbum.objects.all()
     serializer_class = AddSongToAlbumSerializer
-    authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated, CustomUserBasedPermission]
 
 
@@ -32,13 +35,11 @@ class ListUserAlbumSongsView(ListAPIView):
     serializer_class = UserSongAlbumSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = UserSongAlbumFilter
-    authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated, CustomUserBasedPermission]
 
 
 class ListPublicAlbumView(ListAPIView):
     serializer_class = PublicAlbumSerializer
-    authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated, CustomUserBasedPermission]
 
     def get_queryset(self):
@@ -48,7 +49,6 @@ class ListPublicAlbumView(ListAPIView):
 
 class UserFollowAlbumView(ListCreateAPIView):
     serializer_class = UserFollowAlbumSerializer
-    authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated, CustomUserBasedPermission]
 
     def get_queryset(self):
