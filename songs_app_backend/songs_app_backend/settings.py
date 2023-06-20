@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'taggit',
     'django_filters',
+    'django_rest_passwordreset',
     'users',
     'songs',
     'albums'
@@ -181,3 +182,5 @@ EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
 EMAIL_PORT = os.getenv('EMAIL_PORT')
 EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
+
+PASSWORD_RESET_TOKEN_EXPIRES = os.getenv('PASSWORD_RESET_TOKEN_EXPIRES_MNTS')

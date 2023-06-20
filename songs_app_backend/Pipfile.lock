@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "2a56ff88a5d3201a259471f6f4e724fa1d9af8fe734b2017827a4290c19eb087"
+            "sha256": "ab7a92e630b1953e91d5b30488aed392f09aa3cb2bb36a67e39ed2f675b19f0a"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -102,6 +102,14 @@
             ],
             "index": "pypi",
             "version": "==23.2"
+        },
+        "django-rest-passwordreset": {
+            "hashes": [
+                "sha256:0d76eb8d0be9636f4404fd35e8a0842c968effeac1d141c55a45aef1ebce54c7",
+                "sha256:f888fcb589c46e2f86f9686751de4cc1350c519aa3b120b993b1d675fd96fad6"
+            ],
+            "index": "pypi",
+            "version": "==1.3.0"
         },
         "django-sendgrid-v5": {
             "hashes": [
