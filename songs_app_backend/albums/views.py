@@ -2,8 +2,8 @@ from rest_framework.generics import ListCreateAPIView, CreateAPIView, ListAPIVie
 from .serializers import AlbumSerializer, AddSongToAlbumSerializer, UserSongAlbumSerializer, PublicAlbumSerializer, UserFollowAlbumSerializer
 from .models import Album, UserSongAlbum, UserFollowAlbum
 from rest_framework.permissions import IsAuthenticated
-from songs.utils.customPermissions import CustomUserBasedPermission
-from .utils.albumFilters import UserSongAlbumFilter
+from songs.permissions import CustomUserBasedPermission
+from .filters import UserSongAlbumFilter
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import serializers
 # Create your views here.

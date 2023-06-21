@@ -1,5 +1,5 @@
 import django_filters
-from albums.models import UserSongAlbum
+from .models import UserSongAlbum
 
 
 class UserSongAlbumFilter(django_filters.FilterSet):

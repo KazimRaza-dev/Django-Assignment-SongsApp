@@ -1,4 +1,4 @@
-from songs.models import Song
+from .models import Song
 import django_filters
 
 
