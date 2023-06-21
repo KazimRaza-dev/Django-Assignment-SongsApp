@@ -10,8 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
-from datetime import timedelta
+import ssl
 from pathlib import Path
+from datetime import timedelta
+import dotenv
+import os
+
+dotenv.load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -42,8 +47,10 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'taggit',
     'django_filters',
+    'django_rest_passwordreset',
     'users',
-    'songs'
+    'songs',
+    'albums'
 ]
 
 MIDDLEWARE = [
@@ -82,12 +89,12 @@ WSGI_APPLICATION = 'songs_app_backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'songs-app-db',
-        'USER': 'root',
-        'PASSWORD': 'password123',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'ENGINE': os.getenv('DB_ENGINE'),
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
         }
@@ -141,29 +148,39 @@ AUTH_USER_MODEL = 'users.User'
 TAGGIT_CASE_INSENSITIVE = True
 
 # Celery Configuration Options
-CELERY_TIMEZONE = "Asia/Karachi"
+CELERY_TIMEZONE = os.getenv('CERELY_TIMEZONE')
 CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
 
-CELERY_BROKER_URL = 'redis://127.0.0.1:6379'
-CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379'
+CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL')
+CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND')
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SERIALIZER = 'json'
 
 REST_FRAMEWORK = {
-    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
-}
-
-
-SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=50),
-    # ‘REFRESH_TOKEN_LIFETIME’ : timedelta(days = 1),
-    # ‘ROTATE_REFRESH_TOKENS’ : False
-}
-
-REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
 }
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=int(os.getenv('JWT_ACCESS_TOKEN_LIFETIME_MNTS'))),
+    # ‘REFRESH_TOKEN_LIFETIME’ : timedelta(days = 1),
+    # ‘ROTATE_REFRESH_TOKENS’ : False
+}
+
+ssl._create_default_https_context = ssl._create_unverified_context
+
+EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
+SENDGRID_SANDBOX_MODE_IN_DEBUG = os.getenv('SENDGRID_SANDBOX_MODE_IN_DEBUG')
+
+SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
+EMAIL_PORT = os.getenv('EMAIL_PORT')
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
+
+PASSWORD_RESET_TOKEN_EXPIRES = os.getenv('PASSWORD_RESET_TOKEN_EXPIRES_MNTS')

@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from .managers import CustomUserManager
+from django.dispatch import receiver
+from django_rest_passwordreset.signals import reset_password_token_created
+from .utils.resetPassword import sendResetPasswordEmail
 
 
 class User(AbstractUser):
@@ -24,3 +27,8 @@ class User(AbstractUser):
 
     def __str__(self):
         return f"{self.username}({self.id})"
+
+    @receiver(reset_password_token_created)
+    def password_reset_token_created(sender, instance, reset_password_token, *args, **kwargs):
+        # This function will send reset user password my sending a token on user email
+        sendResetPasswordEmail(reset_password_token)

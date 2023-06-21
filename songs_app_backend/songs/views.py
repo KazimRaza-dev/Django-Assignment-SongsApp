@@ -3,8 +3,8 @@ from .models import Song, UserSongLike, UserSongFavorite, UserSongComment
 from .serializers import AddSongSerializer, SongSerializer, LikeSongSerializer, FavoriteSongSerializer, CommentOnSongSerializer
 from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
-from .utils.songsFilter import SongFilter
-from .utils.customPermissions import CustomUserBasedPermission
+from .filters import SongFilter
+from .permissions import CustomUserBasedPermission
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import serializers
 

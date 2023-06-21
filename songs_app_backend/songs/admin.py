@@ -1,6 +1,5 @@
 from django.contrib import admin
-from .models import Song, UserSongLike, UserSongComment, UserSongFavorite, Album, UserSongAlbum, UserFollowAlbum
-# Register your models here.
+from .models import Song, UserSongLike, UserSongComment, UserSongFavorite
 
 
 class SongAdmin(admin.ModelAdmin):

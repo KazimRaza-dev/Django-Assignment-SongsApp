@@ -11,6 +11,10 @@ django-taggit = "*"
 celery = "*"
 pytz = "*"
 django-filter = "*"
+python-dotenv = "*"
+django-sendgrid-v5 = "*"
+certifi = "*"
+django-rest-passwordreset = "*"
 
 [dev-packages]
 
