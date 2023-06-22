@@ -17,7 +17,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"email\" : \"kazim.raza@tintash.com\",\n\"password\" : \"kazim.raza.123\"\n}",
+							"raw": "{\n\"email\" : \"kazim.raza@tintash.com\",\n\"password\" : \"thisismypassword\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -25,15 +25,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/user/login/",
-							"protocol": "http",
+							"raw": "{{host}}/user/login/",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"user",
 								"login",
@@ -59,15 +54,10 @@
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/user/login/refreshtoken/",
-							"protocol": "http",
+							"raw": "{{host}}/user/login/refreshtoken/",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"user",
 								"login",
@@ -85,7 +75,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"email\": \"kazim_raza@gmail.com\",\n\"username\": \"kazim_raza\",\n\"password\": \"12345678\",\n\"user_type\" : \"enduser\",\n\"first_name\": \"Kazim\",\n\"last_name\": \"Raza\"\n}\n",
+							"raw": "{\n\"email\": \"kazim.raza@tintash.com\",\n\"username\": \"kazim123\",\n\"password\": \"12345678\",\n\"user_type\" : \"enduser\",\n\"first_name\": \"kazim\",\n\"last_name\": \"raza\"\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -93,15 +83,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/user/register/",
-							"protocol": "http",
+							"raw": "{{host}}/user/register/",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"user",
 								"register",
@@ -126,15 +111,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/password_reset/",
-							"protocol": "http",
+							"raw": "{{host}}/api/password_reset/",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"password_reset",
@@ -151,7 +131,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"password\": \"kazim.raza.123\",\n    \"token\": \"e9083c64c36906b9192d392d1a69cbb0190f715dcff850\"\n}",
+							"raw": "{\n    \"password\": \"thisismypassword\",\n    \"token\": \"bd29da52448b809eee988a63d211de119142\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -159,15 +139,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/password_reset/confirm/",
-							"protocol": "http",
+							"raw": "{{host}}/api/password_reset/confirm/",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"password_reset",
@@ -199,15 +174,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/songs?tags=green",
-							"protocol": "http",
+							"raw": "{{host}}/songs",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"songs"
 							],
@@ -219,7 +189,8 @@
 								},
 								{
 									"key": "tags",
-									"value": "green"
+									"value": "green",
+									"disabled": true
 								}
 							]
 						}
@@ -243,7 +214,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"towards the sky\",\n    \"singer\": \"john\",\n    \"tags\": [\"john\",\"towards\"],\n    \"created_time\":\"2023-06-20T11:14:05Z\"\n}",
+							"raw": "{\n    \"title\": \"Towards the sky\",\n    \"singer\": \"john\",\n    \"tags\": [\"john\",\"sky\"],\n    \"created_time\":\"2023-06-22T14:04:05Z\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -251,15 +222,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/songs/add/",
-							"protocol": "http",
+							"raw": "{{host}}/songs/add/",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"songs",
 								"add",
@@ -286,7 +252,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"song_id\": 20\n}",
+							"raw": "{\n    \"song_id\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -294,15 +260,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/songs/like/",
-							"protocol": "http",
+							"raw": "{{host}}/songs/like/",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"songs",
 								"like",
@@ -329,7 +290,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"song_id\": 20\n}",
+							"raw": "{\n    \"song_id\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -337,15 +298,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/songs/favorite/",
-							"protocol": "http",
+							"raw": "{{host}}/songs/favorite/",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"songs",
 								"favorite",
@@ -372,7 +328,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"song_id\": 20,\n    \"comment\": \"what an amazing song!!\"\n}",
+							"raw": "{\n    \"song_id\": 1,\n    \"comment\": \"what an amazing song!!\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -380,15 +336,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/songs/comment/",
-							"protocol": "http",
+							"raw": "{{host}}/songs/comment/",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"songs",
 								"comment",
@@ -420,7 +371,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"Magic of love\",\n    \"status\": \"public\"\n}",
+							"raw": "{\n    \"title\": \"Over the moon\",\n    \"status\": \"public\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -428,15 +379,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/albums/",
-							"protocol": "http",
+							"raw": "{{host}}/albums/",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"albums",
 								""
@@ -462,7 +408,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"song_id\": 20,\n    \"album_id\": 29\n}",
+							"raw": "{\n    \"song_id\": 2,\n    \"album_id\": 2\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -470,15 +416,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/albums/add/",
-							"protocol": "http",
+							"raw": "{{host}}/albums/add/",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"albums",
 								"add",
@@ -504,15 +445,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/albums/filter",
-							"protocol": "http",
+							"raw": "{{host}}/albums/filter?album_id=1",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"albums",
 								"filter"
@@ -520,17 +456,16 @@
 							"query": [
 								{
 									"key": "album_id",
-									"value": "29",
-									"disabled": true
+									"value": "1"
 								},
 								{
 									"key": "song_id",
-									"value": "20",
+									"value": "2",
 									"disabled": true
 								},
 								{
 									"key": "user_id",
-									"value": "39",
+									"value": "1",
 									"disabled": true
 								}
 							]
@@ -554,15 +489,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/albums/public/",
-							"protocol": "http",
+							"raw": "{{host}}/albums/public/",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"albums",
 								"public",
@@ -592,7 +522,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"album_id\" : 24\n}",
+							"raw": "{\n    \"album_id\" : 2\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -600,15 +530,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/albums/follow/",
-							"protocol": "http",
+							"raw": "{{host}}/albums/follow/",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{host}}"
 							],
-							"port": "8000",
 							"path": [
 								"albums",
 								"follow",
