@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Song, UserSongLike, UserSongFavorite, UserSongComment
+from .models import Song, Like, Favorite, Comment
 from taggit.serializers import TagListSerializerField, TaggitSerializer
 from .tasks import add_song_task
 from datetime import datetime, timedelta
@@ -29,16 +29,16 @@ class AddSongSerializer(TaggitSerializer, serializers.ModelSerializer):
         schedule_datetime = scheduled_time.strftime("%Y-%m-%dT%H:%M:%SZ")
 
         # Get the current time in Pakistan Standard Time (PST)
-        pst_timezone = pytz.timezone("Asia/Karachi")
+        pst_timezone = pytz.timezone('Asia/Karachi')
         current_time = datetime.now(
             pst_timezone).strftime("%Y-%m-%dT%H:%M:%SZ")
 
         # Check if the scheduled time is in the future
         if schedule_datetime <= current_time:
             raise serializers.ValidationError(
-                "Scheduled time must be in the future.")
+                'Scheduled time must be in the future.')
 
-        data["creation_time"] = self.calculate_creation_time_seconds(
+        data['creation_time'] = self.calculate_creation_time_seconds(
             schedule_datetime, current_time)
         return data
 
@@ -72,7 +72,7 @@ class LikeSongSerializer(serializers.ModelSerializer):
     user_id = serializers.PrimaryKeyRelatedField(read_only=True)
 
     class Meta:
-        model = UserSongLike
+        model = Like
         fields = '__all__'
 
 
@@ -80,7 +80,7 @@ class FavoriteSongSerializer(serializers.ModelSerializer):
     user_id = serializers.PrimaryKeyRelatedField(read_only=True)
 
     class Meta:
-        model = UserSongFavorite
+        model = Favorite
         fields = '__all__'
 
 
@@ -88,5 +88,5 @@ class CommentOnSongSerializer(serializers.ModelSerializer):
     user_id = serializers.PrimaryKeyRelatedField(read_only=True)
 
     class Meta:
-        model = UserSongComment
+        model = Comment
         fields = '__all__'

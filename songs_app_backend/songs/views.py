@@ -1,5 +1,5 @@
 from rest_framework.generics import CreateAPIView, ListAPIView
-from .models import Song, UserSongLike, UserSongFavorite, UserSongComment
+from .models import Song, Like, Favorite, Comment
 from .serializers import AddSongSerializer, SongSerializer, LikeSongSerializer, FavoriteSongSerializer, CommentOnSongSerializer
 from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
@@ -7,14 +7,16 @@ from .filters import SongFilter
 from .permissions import CustomUserBasedPermission
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import serializers
+from .utils.pagination import CustomPagination
 
 
 class SongListFilterView(ListAPIView):
-    queryset = Song.objects.all()
+    queryset = Song.objects.all().order_by('id')
     serializer_class = SongSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = SongFilter
     permission_classes = [IsAuthenticated, CustomUserBasedPermission]
+    pagination_class = CustomPagination
 
 
 class SongCreateView(CreateAPIView):
@@ -26,11 +28,11 @@ class SongCreateView(CreateAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.create(serializer.validated_data)
-        return Response({"message": "Song creation scheduled successfully"}, status=201)
+        return Response({'message': 'Song creation scheduled successfully'}, status=201)
 
 
 class LikeSongView(CreateAPIView):
-    queryset = UserSongLike.objects.all()
+    queryset = Like.objects.all()
     serializer_class = LikeSongSerializer
     permission_classes = [IsAuthenticated, CustomUserBasedPermission]
 
@@ -38,11 +40,11 @@ class LikeSongView(CreateAPIView):
         try:
             serializer.save(user_id=self.request.user)
         except Exception as e:
-            raise serializers.ValidationError(e)
+            raise serializers.ValidationError({'message': e})
 
 
 class FavoriteSongView(CreateAPIView):
-    queryset = UserSongFavorite.objects.all()
+    queryset = Favorite.objects.all()
     serializer_class = FavoriteSongSerializer
     permission_classes = [IsAuthenticated, CustomUserBasedPermission]
 
@@ -50,11 +52,11 @@ class FavoriteSongView(CreateAPIView):
         try:
             serializer.save(user_id=self.request.user)
         except Exception as e:
-            raise serializers.ValidationError(e)
+            raise serializers.ValidationError({'message': e})
 
 
 class CommentOnSongView(CreateAPIView):
-    queryset = UserSongComment.objects.all()
+    queryset = Comment.objects.all()
     serializer_class = CommentOnSongSerializer
     permission_classes = [IsAuthenticated, CustomUserBasedPermission]
 
@@ -62,4 +64,4 @@ class CommentOnSongView(CreateAPIView):
         try:
             serializer.save(user_id=self.request.user)
         except Exception as e:
-            raise serializers.ValidationError(e)
+            raise serializers.ValidationError({'message': e})

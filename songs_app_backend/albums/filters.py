@@ -1,5 +1,5 @@
 import django_filters
-from .models import UserSongAlbum
+from .models import AlbumSong
 
 
 class UserSongAlbumFilter(django_filters.FilterSet):
@@ -8,5 +8,5 @@ class UserSongAlbumFilter(django_filters.FilterSet):
         field_name='album_id__song_id_user_id', lookup_expr='icontains')
 
     class Meta:
-        model = UserSongAlbum
+        model = AlbumSong
         fields = ['album_id', 'song_id', 'user_id']

@@ -14,7 +14,7 @@ class Song(models.Model):
         return f"{self.title}({self.id})"
 
 
-class UserSongLike(models.Model):
+class Like(models.Model):
     user_id = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='liked_songs')
     song_id = models.ForeignKey(
@@ -25,7 +25,7 @@ class UserSongLike(models.Model):
         unique_together = ['user_id', 'song_id']
 
 
-class UserSongComment(models.Model):
+class Comment(models.Model):
     user_id = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='songs_comments')
     song_id = models.ForeignKey(
@@ -33,7 +33,7 @@ class UserSongComment(models.Model):
     comment = models.CharField(max_length=200)
 
 
-class UserSongFavorite(models.Model):
+class Favorite(models.Model):
     user_id = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='favorite_songs')
     song_id = models.ForeignKey(

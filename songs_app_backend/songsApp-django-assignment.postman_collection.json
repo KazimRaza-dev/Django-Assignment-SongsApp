@@ -17,7 +17,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"email\" : \"kazim.raza@tintash.com\",\n\"password\" : \"thisismypassword\"\n}",
+							"raw": "{\n\"email\" : \"kazim.raza@tintash.com\",\n\"password\" : \"thisismynewpassword\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -25,12 +25,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/user/login/",
+							"raw": "{{host}}/users/login/",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"user",
+								"users",
 								"login",
 								""
 							]
@@ -48,18 +48,18 @@
 							"formdata": [
 								{
 									"key": "refresh",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg3MTc5OTAzLCJpYXQiOjE2ODcxNzY5MDMsImp0aSI6IjBkMzIxNWUwYTc5ZDRhYmVhNjgwNzY1YWI0NmQyYzg5IiwidXNlcl9pZCI6MzZ9.pVPbenuwOuWe4-p1xcK2oKUCxtTGnWXzRQ4BQKWnc_0",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY4ODYzMDg5NCwiaWF0IjoxNjg4NTQ0NDk0LCJqdGkiOiJhYjJlYTQwMmY3OTU0ZTIzYTQ4NjU2N2FmNDhlNzE2NiIsInVzZXJfaWQiOjQxfQ.C8RvP_W96XxAshLnz6v2tiTrMcPsIAbCUUDXaZMVx8w",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{host}}/user/login/refreshtoken/",
+							"raw": "{{host}}/users/login/refreshtoken/",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"user",
+								"users",
 								"login",
 								"refreshtoken",
 								""
@@ -75,7 +75,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"email\": \"kazim.raza@tintash.com\",\n\"username\": \"kazim123\",\n\"password\": \"12345678\",\n\"user_type\" : \"enduser\",\n\"first_name\": \"kazim\",\n\"last_name\": \"raza\"\n}\n",
+							"raw": "{\n\"email\": \"anderson@gmail.com\",\n\"username\": \"jimmy123\",\n\"password\": \"12345678\",\n\"user_type\" : \"enduser\",\n\"first_name\": \"jimmy\",\n\"last_name\": \"amderson\"\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -83,12 +83,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/user/register/",
+							"raw": "{{host}}/users/register/",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"user",
+								"users",
 								"register",
 								""
 							]
@@ -131,7 +131,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"password\": \"thisismypassword\",\n    \"token\": \"bd29da52448b809eee988a63d211de119142\"\n}",
+							"raw": "{\n    \"password\": \"thisismynewpassword\",\n    \"token\": \"470296dbfd6cd4db1b654eff39b25a225a76b967688e5561fa\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -174,7 +174,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/songs",
+							"raw": "{{host}}/songs?page=1",
 							"host": [
 								"{{host}}"
 							],
@@ -191,6 +191,10 @@
 									"key": "tags",
 									"value": "green",
 									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1"
 								}
 							]
 						}
@@ -214,7 +218,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"Towards the sky\",\n    \"singer\": \"john\",\n    \"tags\": [\"john\",\"sky\"],\n    \"created_time\":\"2023-06-22T14:04:05Z\"\n}",
+							"raw": "{\n    \"title\": \"see you again new\",\n    \"singer\": \"justin breber\",\n    \"tags\": [\"justin\",\"breber\"],\n    \"created_time\":\"2023-07-05T20:01:40Z\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -252,7 +256,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"song_id\": 1\n}",
+							"raw": "{\n    \"song_id\": 10\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -290,7 +294,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"song_id\": 1\n}",
+							"raw": "{\n    \"song_id\": 6\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -328,7 +332,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"song_id\": 1,\n    \"comment\": \"what an amazing song!!\"\n}",
+							"raw": "{\n    \"song_id\": 1,\n    \"comment\": \"abc song!!\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -356,6 +360,9 @@
 			"item": [
 				{
 					"name": "CREATE AND LIST USER ALBUMS",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -367,11 +374,11 @@
 								}
 							]
 						},
-						"method": "POST",
+						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"Over the moon\",\n    \"status\": \"public\"\n}",
+							"raw": "{\n    \"title\": \"My favvvv\",\n    \"status\": \"private\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -379,13 +386,19 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/albums/",
+							"raw": "{{host}}/albums/?page=1",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"albums",
 								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
 							]
 						}
 					},
@@ -408,7 +421,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"song_id\": 2,\n    \"album_id\": 2\n}",
+							"raw": "{\n    \"song_id\": 71,\n    \"album_id\": 31\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -445,7 +458,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/albums/filter?album_id=1",
+							"raw": "{{host}}/albums/filter?album_id=31&page=1",
 							"host": [
 								"{{host}}"
 							],
@@ -456,7 +469,7 @@
 							"query": [
 								{
 									"key": "album_id",
-									"value": "1"
+									"value": "31"
 								},
 								{
 									"key": "song_id",
@@ -467,6 +480,10 @@
 									"key": "user_id",
 									"value": "1",
 									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1"
 								}
 							]
 						}
@@ -489,7 +506,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/albums/public/",
+							"raw": "{{host}}/albums/public/?page=1",
 							"host": [
 								"{{host}}"
 							],
@@ -497,6 +514,12 @@
 								"albums",
 								"public",
 								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
 							]
 						}
 					},
@@ -522,7 +545,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"album_id\" : 2\n}",
+							"raw": "{\n    \"album_id\" : 34\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -530,7 +553,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/albums/follow/",
+							"raw": "{{host}}/albums/follow/?page=1",
 							"host": [
 								"{{host}}"
 							],
@@ -538,6 +561,12 @@
 								"albums",
 								"follow",
 								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
 							]
 						}
 					},

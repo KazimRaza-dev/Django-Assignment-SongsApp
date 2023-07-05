@@ -18,5 +18,5 @@ class UserLoginView(APIView):
         serializer = UserLoginSerializer(data=request.data)
         if serializer.is_valid():
             tokens = serializer.validated_data['tokens']
-            return Response({'message': 'User successfully login', "token": tokens})
+            return Response({'message': 'User successfully login', 'token': tokens})
         return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)

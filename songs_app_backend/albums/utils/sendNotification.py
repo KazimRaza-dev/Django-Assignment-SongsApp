@@ -1,4 +1,4 @@
-from albums.models import Album, UserFollowAlbum
+from albums.models import Album, Follower
 from users.models import User
 from songs.models import Song
 import os
@@ -11,7 +11,7 @@ def sendNotificationToFollowersViaEmail(album_id, song_id):
     try:
         followers_emails = getAlbumFollowers(album_id)
         if not followers_emails:
-            return "No user is following this album."
+            return 'No user is following this album.'
 
         message = Mail(
             from_email=os.getenv('EMAIL_SENDER'),
@@ -33,7 +33,7 @@ def sendNotificationToFollowersViaEmail(album_id, song_id):
 
 
 def getAlbumFollowers(album_id):
-    album_followers = UserFollowAlbum.objects.filter(
+    album_followers = Follower.objects.filter(
         album_id=album_id).values_list('user_id', flat=True)
 
     if not album_followers:

@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'taggit',
     'django_filters',
     'django_rest_passwordreset',
+    # custom apps
     'users',
     'songs',
     'albums'
