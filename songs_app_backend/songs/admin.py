@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Song, UserSongLike, UserSongComment, UserSongFavorite
+from .models import Song, Like, Comment, Favorite
 
 
 class SongAdmin(admin.ModelAdmin):
@@ -13,19 +13,19 @@ class SongAdmin(admin.ModelAdmin):
         return u", ".join(o.name for o in obj.tags.all())
 
 
-class UserSongLikeAdmin(admin.ModelAdmin):
+class LikeSongAdmin(admin.ModelAdmin):
     list_display = ('id', 'user_id', 'song_id')
 
 
-class UserSongFavoriteAdmin(admin.ModelAdmin):
+class FavoriteSongAdmin(admin.ModelAdmin):
     list_display = ('id', 'user_id', 'song_id')
 
 
-class UserSongCommentAdmin(admin.ModelAdmin):
+class CommentSongAdmin(admin.ModelAdmin):
     list_display = ('id', 'user_id', 'song_id', 'comment')
 
 
 admin.site.register(Song, SongAdmin)
-admin.site.register(UserSongLike, UserSongLikeAdmin)
-admin.site.register(UserSongFavorite, UserSongFavoriteAdmin)
-admin.site.register(UserSongComment, UserSongCommentAdmin)
+admin.site.register(Like, LikeSongAdmin)
+admin.site.register(Favorite, FavoriteSongAdmin)
+admin.site.register(Comment, CommentSongAdmin)

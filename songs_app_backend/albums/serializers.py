@@ -1,6 +1,6 @@
 
 from rest_framework import serializers
-from .models import Album, UserSongAlbum, UserFollowAlbum
+from .models import Album, AlbumSong, Follower
 from .utils.sendNotification import sendNotificationToFollowersViaEmail
 
 
@@ -22,13 +22,13 @@ class PublicAlbumSerializer(serializers.ModelSerializer):
 class UserSongAlbumSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = UserSongAlbum
+        model = AlbumSong
         fields = ('id', 'album_id', 'song_id', 'user_id')
 
 
 class AddSongToAlbumSerializer(serializers.ModelSerializer):
     class Meta:
-        model = UserSongAlbum
+        model = AlbumSong
         exclude = ['user_id']
 
     def create(self, validated_data):
@@ -45,14 +45,14 @@ class AddSongToAlbumSerializer(serializers.ModelSerializer):
             validated_data['user_id'] = user
             # Sending notification to Album followers about new addition.
             sendNotificationToFollowersViaEmail(album_id, song_id)
-            return UserSongAlbum.objects.create(**validated_data)
+            return AlbumSong.objects.create(**validated_data)
         except Exception as e:
             raise serializers.ValidationError({'message': e})
 
 
 class UserFollowAlbumSerializer(serializers.ModelSerializer):
     class Meta:
-        model = UserFollowAlbum
+        model = Follower
         exclude = ['user_id']
 
     def create(self, validated_data):
@@ -65,6 +65,6 @@ class UserFollowAlbumSerializer(serializers.ModelSerializer):
                 raise serializers.ValidationError(
                     "Album Not Exists OR it's not Public.")
 
-            return UserFollowAlbum.objects.create(**validated_data)
+            return Follower.objects.create(**validated_data)
         except Exception as e:
             raise serializers.ValidationError({'message': e})

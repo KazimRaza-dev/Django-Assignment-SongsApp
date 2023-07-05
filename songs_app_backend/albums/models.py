@@ -19,14 +19,14 @@ class Album(models.Model):
         unique_together = ['title', 'user_id']
 
 
-class UserFollowAlbum(models.Model):
+class Follower(models.Model):
     user_id = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='followed_albums')
     album_id = models.ForeignKey(
         Album, on_delete=models.CASCADE, related_name='users_following')
 
 
-class UserSongAlbum(models.Model):
+class AlbumSong(models.Model):
     song_id = models.ForeignKey(
         Song, on_delete=models.CASCADE, related_name='users_albums')
     user_id = models.ForeignKey(

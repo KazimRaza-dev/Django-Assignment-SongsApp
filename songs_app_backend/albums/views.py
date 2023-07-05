@@ -1,6 +1,6 @@
 from rest_framework.generics import ListCreateAPIView, CreateAPIView, ListAPIView
 from .serializers import AlbumSerializer, AddSongToAlbumSerializer, UserSongAlbumSerializer, PublicAlbumSerializer, UserFollowAlbumSerializer
-from .models import Album, UserSongAlbum, UserFollowAlbum
+from .models import Album, AlbumSong, Follower
 from rest_framework.permissions import IsAuthenticated
 from songs.permissions import CustomUserBasedPermission
 from .filters import UserSongAlbumFilter
@@ -25,13 +25,13 @@ class AlbumView(ListCreateAPIView):
 
 
 class AddSongToAlbumView(CreateAPIView):
-    queryset = UserSongAlbum.objects.all()
+    queryset = AlbumSong.objects.all()
     serializer_class = AddSongToAlbumSerializer
     permission_classes = [IsAuthenticated, CustomUserBasedPermission]
 
 
 class ListUserAlbumSongsView(ListAPIView):
-    queryset = UserSongAlbum.objects.all()
+    queryset = AlbumSong.objects.all()
     serializer_class = UserSongAlbumSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = UserSongAlbumFilter
@@ -53,4 +53,4 @@ class UserFollowAlbumView(ListCreateAPIView):
 
     def get_queryset(self):
         user = self.request.user
-        return UserFollowAlbum.objects.filter(user_id=user)
+        return Follower.objects.filter(user_id=user)

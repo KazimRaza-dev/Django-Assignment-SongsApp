@@ -1,5 +1,5 @@
 from rest_framework.generics import CreateAPIView, ListAPIView
-from .models import Song, UserSongLike, UserSongFavorite, UserSongComment
+from .models import Song, Like, Favorite, Comment
 from .serializers import AddSongSerializer, SongSerializer, LikeSongSerializer, FavoriteSongSerializer, CommentOnSongSerializer
 from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
@@ -30,7 +30,7 @@ class SongCreateView(CreateAPIView):
 
 
 class LikeSongView(CreateAPIView):
-    queryset = UserSongLike.objects.all()
+    queryset = Like.objects.all()
     serializer_class = LikeSongSerializer
     permission_classes = [IsAuthenticated, CustomUserBasedPermission]
 
@@ -42,7 +42,7 @@ class LikeSongView(CreateAPIView):
 
 
 class FavoriteSongView(CreateAPIView):
-    queryset = UserSongFavorite.objects.all()
+    queryset = Favorite.objects.all()
     serializer_class = FavoriteSongSerializer
     permission_classes = [IsAuthenticated, CustomUserBasedPermission]
 
@@ -54,7 +54,7 @@ class FavoriteSongView(CreateAPIView):
 
 
 class CommentOnSongView(CreateAPIView):
-    queryset = UserSongComment.objects.all()
+    queryset = Comment.objects.all()
     serializer_class = CommentOnSongSerializer
     permission_classes = [IsAuthenticated, CustomUserBasedPermission]
 

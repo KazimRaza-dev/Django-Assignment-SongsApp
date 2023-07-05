@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Song, UserSongLike, UserSongFavorite, UserSongComment
+from .models import Song, Like, Favorite, Comment
 from taggit.serializers import TagListSerializerField, TaggitSerializer
 from .tasks import add_song_task
 from datetime import datetime, timedelta
@@ -72,7 +72,7 @@ class LikeSongSerializer(serializers.ModelSerializer):
     user_id = serializers.PrimaryKeyRelatedField(read_only=True)
 
     class Meta:
-        model = UserSongLike
+        model = Like
         fields = '__all__'
 
 
@@ -80,7 +80,7 @@ class FavoriteSongSerializer(serializers.ModelSerializer):
     user_id = serializers.PrimaryKeyRelatedField(read_only=True)
 
     class Meta:
-        model = UserSongFavorite
+        model = Favorite
         fields = '__all__'
 
 
@@ -88,5 +88,5 @@ class CommentOnSongSerializer(serializers.ModelSerializer):
     user_id = serializers.PrimaryKeyRelatedField(read_only=True)
 
     class Meta:
-        model = UserSongComment
+        model = Comment
         fields = '__all__'
