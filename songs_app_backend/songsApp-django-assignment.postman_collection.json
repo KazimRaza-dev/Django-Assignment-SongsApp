@@ -25,7 +25,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/user/login/",
+							"raw": "{{host}}/users/login/",
 							"host": [
 								"{{host}}"
 							],
@@ -54,7 +54,7 @@
 							]
 						},
 						"url": {
-							"raw": "{{host}}/user/login/refreshtoken/",
+							"raw": "{{host}}/users/login/refreshtoken/",
 							"host": [
 								"{{host}}"
 							],
@@ -83,7 +83,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/user/register/",
+							"raw": "{{host}}/users/register/",
 							"host": [
 								"{{host}}"
 							],

@@ -11,7 +11,7 @@ def sendNotificationToFollowersViaEmail(album_id, song_id):
     try:
         followers_emails = getAlbumFollowers(album_id)
         if not followers_emails:
-            return "No user is following this album."
+            return 'No user is following this album.'
 
         message = Mail(
             from_email=os.getenv('EMAIL_SENDER'),

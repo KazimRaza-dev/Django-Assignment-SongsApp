@@ -21,7 +21,7 @@ class AlbumView(ListCreateAPIView):
         try:
             serializer.save(user_id=self.request.user)
         except Exception as e:
-            raise serializers.ValidationError(e)
+            raise serializers.ValidationError({'message': e})
 
 
 class AddSongToAlbumView(CreateAPIView):

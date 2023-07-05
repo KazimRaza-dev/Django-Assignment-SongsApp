@@ -26,7 +26,7 @@ class SongCreateView(CreateAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.create(serializer.validated_data)
-        return Response({"message": "Song creation scheduled successfully"}, status=201)
+        return Response({'message': 'Song creation scheduled successfully'}, status=201)
 
 
 class LikeSongView(CreateAPIView):
@@ -38,7 +38,7 @@ class LikeSongView(CreateAPIView):
         try:
             serializer.save(user_id=self.request.user)
         except Exception as e:
-            raise serializers.ValidationError(e)
+            raise serializers.ValidationError({'message': e})
 
 
 class FavoriteSongView(CreateAPIView):
@@ -50,7 +50,7 @@ class FavoriteSongView(CreateAPIView):
         try:
             serializer.save(user_id=self.request.user)
         except Exception as e:
-            raise serializers.ValidationError(e)
+            raise serializers.ValidationError({'message': e})
 
 
 class CommentOnSongView(CreateAPIView):
@@ -62,4 +62,4 @@ class CommentOnSongView(CreateAPIView):
         try:
             serializer.save(user_id=self.request.user)
         except Exception as e:
-            raise serializers.ValidationError(e)
+            raise serializers.ValidationError({'message': e})

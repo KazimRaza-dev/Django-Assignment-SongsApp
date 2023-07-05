@@ -39,10 +39,10 @@ class UserLoginSerializer(serializers.Serializer):
                 'request'), email=email, password=password)
             if not user:
                 raise serializers.ValidationError(
-                    'Invalid email or password.')
+                    {'message': 'Invalid email or password.'})
         else:
             raise serializers.ValidationError(
-                'Email and password are required.')
+                {'message': 'Email and password are required.'})
 
         data['user'] = user
         data['tokens'] = self.get_tokens(user)

@@ -40,7 +40,7 @@ class AddSongToAlbumSerializer(serializers.ModelSerializer):
             album = Album.objects.filter(id=album_id, user_id=user).first()
             if not album:
                 raise serializers.ValidationError(
-                    "You don't have permissions to add song to other users albums")
+                    {'message': 'You do not have permissions to add song to other users albums'})
 
             validated_data['user_id'] = user
             # Sending notification to Album followers about new addition.
@@ -63,7 +63,7 @@ class UserFollowAlbumSerializer(serializers.ModelSerializer):
 
             if not album:
                 raise serializers.ValidationError(
-                    "Album Not Exists OR it's not Public.")
+                    {'message': 'Album Not Exists OR it is not Public.'})
 
             return Follower.objects.create(**validated_data)
         except Exception as e:
