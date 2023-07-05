@@ -7,14 +7,16 @@ from .filters import SongFilter
 from .permissions import CustomUserBasedPermission
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import serializers
+from .utils.pagination import CustomPagination
 
 
 class SongListFilterView(ListAPIView):
-    queryset = Song.objects.all()
+    queryset = Song.objects.all().order_by('id')
     serializer_class = SongSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = SongFilter
     permission_classes = [IsAuthenticated, CustomUserBasedPermission]
+    pagination_class = CustomPagination
 
 
 class SongCreateView(CreateAPIView):
